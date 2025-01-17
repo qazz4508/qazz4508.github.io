@@ -36,6 +36,9 @@ if (vest_id && openPwaVids[vest_id]) {
   createManifestElement(vest_id, openPwaVids[vest_id])
 }
 
+console.log("navigator对象",navigator);
+
+
 if ('registerProtocolHandler' in navigator) {
   console.log("注册 nav");
   
@@ -44,6 +47,8 @@ if ('registerProtocolHandler' in navigator) {
       '/#/store', // 处理页面的路径
       'sdk示例' // 应用名称
   );
+}else{
+  console.log("无法注册");
 }
 
 if (navigator.serviceWorker != null) {

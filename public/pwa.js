@@ -30,9 +30,7 @@ function createManifestElement(vest_id, name) {
 }
 
 // 获取 URL 参数
-const urlParams = new URLSearchParams(window.location.search);
-const vest_id = urlParams.get("vest_id");
-console.log("VVV",vest_id);
+const vest_id = 1;
 
 if (vest_id && openPwaVids[vest_id]) {
   createManifestElement(vest_id, openPwaVids[vest_id])

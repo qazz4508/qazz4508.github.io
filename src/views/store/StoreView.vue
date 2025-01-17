@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="h2">下载页!!</div>
-
+        <div class="h2">下载页!!%%</div>
+        <div v-if="done">已成功安装 </div>
         <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button>
     </div>
 </template>
@@ -15,6 +15,7 @@ export default {
             intervalId: null,  // 定时器 ID
             deferredPrompt: null, // 保存 beforeinstallprompt 事件对象
             canInstallPWA: false, // 控制按钮的显示
+            done:false
         }
     },
     computed: {
@@ -47,6 +48,7 @@ export default {
         // 监听 appinstalled 事件
         window.addEventListener("appinstalled", () => {
             console.log("PWA 已成功安装");
+            this.done = true;
             this.installed = true; // 更新已安装状态
             this.canInstall = false; // 隐藏安装按钮
         });

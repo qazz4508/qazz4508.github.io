@@ -1,8 +1,11 @@
 <template>
     <div class="container">
         <div class="h2">下载页!!%%</div>
+        <div>是否PWA启动: {{ isStandalone }}</div>
         <div v-if="done">已成功安装 </div>
         <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button>
+        <button v-if="done" @click="launch">启动pwa应用</button>
+        <button v-if="done" @click="launch2">启动pwa应用2</button>
     </div>
 </template>
 
@@ -15,7 +18,8 @@ export default {
             intervalId: null,  // 定时器 ID
             deferredPrompt: null, // 保存 beforeinstallprompt 事件对象
             canInstallPWA: false, // 控制按钮的显示
-            done:false
+            done: false,
+            isStandalone: false,
         }
     },
     computed: {
@@ -30,6 +34,7 @@ export default {
     },
     mounted() {
         console.log("mounted");
+        this.isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
         // this.startFakeProgress()
         // 监听 beforeinstallprompt 事件
@@ -54,6 +59,15 @@ export default {
         });
     },
     methods: {
+        launch2() {
+            const intentUrl = `intent:/store#Intent;scheme=https;package=com.your.package;end`;
+            window.location.href = intentUrl;
+        },
+        launch() {
+            // 跳转到 PWA 的 start_url
+            const startUrl = '/store';
+            window.location.href = startUrl;
+        },
         async downloadClick() {
             // this.startFakeProgress()
             if (this.deferredPrompt) {

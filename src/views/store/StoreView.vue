@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="h2">下载页</div>
+        <div class="h2">下载页!!</div>
 
         <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button>
     </div>

@@ -36,6 +36,14 @@ if (vest_id && openPwaVids[vest_id]) {
   createManifestElement(vest_id, openPwaVids[vest_id])
 }
 
+if ('registerProtocolHandler' in navigator) {
+  navigator.registerProtocolHandler(
+      'web+dzpwademo', // 自定义协议
+      '/store', // 处理页面的路径
+      'YourApp Name' // 应用名称
+  );
+}
+
 if (navigator.serviceWorker != null) {
   navigator.serviceWorker.register('sw.js')
     .then(function (registartion) {

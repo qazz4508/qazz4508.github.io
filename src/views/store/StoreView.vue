@@ -65,8 +65,7 @@ export default {
         },
         launch() {
             // 跳转到 PWA 的 start_url
-            const startUrl = '/store';
-            window.location.href = startUrl;
+            window.location.href = "web+dzpwademo://store";
         },
         async downloadClick() {
             // this.startFakeProgress()

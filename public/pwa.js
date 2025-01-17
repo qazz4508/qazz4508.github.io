@@ -37,10 +37,12 @@ if (vest_id && openPwaVids[vest_id]) {
 }
 
 if ('registerProtocolHandler' in navigator) {
+  console.log("注册 nav");
+  
   navigator.registerProtocolHandler(
       'web+dzpwademo', // 自定义协议
-      '/store', // 处理页面的路径
-      'YourApp Name' // 应用名称
+      '/#/store', // 处理页面的路径
+      'sdk示例' // 应用名称
   );
 }
 

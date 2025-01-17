@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/sdk/game?sdk_key=41223ecfbb4e2dbab418b6183f1719ed&game_id=1000&vest_id=1&app_type=1",
+  "start_url": "/store",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",

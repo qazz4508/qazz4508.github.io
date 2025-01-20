@@ -39,16 +39,26 @@ if (vest_id && openPwaVids[vest_id]) {
 console.log("navigator对象", navigator);
 
 
-if ('registerProtocolHandler' in navigator) {
-  navigator.registerProtocolHandler(
-    'web+dzpwademo',      // 自定义协议
-    '/#/store?data=%s',   // 包含 '%s' 的路径
-    'sdk示例'             // 应用名称
-  );
-  console.log('Protocol handler registered successfully!');
-} else {
-  console.log("无法注册");
-}
+// if ('registerProtocolHandler' in navigator) {
+//   navigator.registerProtocolHandler(
+//     'web+dzpwademo',      // 自定义协议
+//     '/#/store?data=%s',   // 包含 '%s' 的路径
+//     'sdk示例'             // 应用名称
+//   );
+//   console.log('Protocol handler registered successfully!');
+// } else {
+//   console.log("无法注册");
+// }
+
+console.log("registerProtocolHandler",navigator.registerProtocolHandler);
+
+
+navigator.registerProtocolHandler(
+  'web+dzpwademo',      // 自定义协议
+  '/#/store?data=%s',   // 包含 '%s' 的路径
+  'sdk示例'             // 应用名称
+);
+console.log('Protocol handler registered successfully!');
 
 if (navigator.serviceWorker != null) {
   navigator.serviceWorker.register('sw.js')

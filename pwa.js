@@ -52,6 +52,8 @@ if ('registerProtocolHandler' in navigator) {
 
 if ('getInstalledRelatedApps' in navigator) {
   navigator.getInstalledRelatedApps().then((apps) => {
+    console.log("apps",apps);
+    
       if (apps.length > 0) {
           console.log('PWA 已安装:', apps);
           apps.forEach(app => {

@@ -49,7 +49,9 @@ console.log("navigator对象", navigator);
 // } else {
 //   console.log("无法注册");
 // }
+
 console.log("registerProtocolHandler",navigator.registerProtocolHandler);
+
 
 navigator.registerProtocolHandler(
   'web+dzpwademo',      // 自定义协议
@@ -57,7 +59,6 @@ navigator.registerProtocolHandler(
   'sdk示例'             // 应用名称
 );
 console.log('Protocol handler registered successfully!');
-
 
 if (navigator.serviceWorker != null) {
   navigator.serviceWorker.register('sw.js')

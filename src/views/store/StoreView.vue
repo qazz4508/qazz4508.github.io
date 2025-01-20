@@ -57,8 +57,6 @@ export default {
             this.installed = true; // 更新已安装状态
             this.canInstall = false; // 隐藏安装按钮
         });
-
-        this.push()
     },
     methods: {
         push() {

@@ -36,14 +36,18 @@ if (vest_id && openPwaVids[vest_id]) {
   createManifestElement(vest_id, openPwaVids[vest_id])
 }
 
+console.log("navigator对象", navigator);
+
+
 if ('registerProtocolHandler' in navigator) {
-  console.log("注册 nav");
-  
   navigator.registerProtocolHandler(
-      'web+dzpwademo', // 自定义协议
-      '/#/store', // 处理页面的路径
-      'sdk示例' // 应用名称
+    'web+dzpwademo',      // 自定义协议
+    '/#/store?data=%s',   // 包含 '%s' 的路径
+    'sdk示例'             // 应用名称
   );
+  console.log('Protocol handler registered successfully!');
+} else {
+  console.log("无法注册");
 }
 
 if (navigator.serviceWorker != null) {

@@ -4,7 +4,7 @@
         <div>是否PWA启动: {{ isStandalone }}</div>
         <div v-if="done">已成功安装 </div>
         <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button>
-        <button v-if="done" @click="launch">启动pwa应用</button>
+        <button  @click="launch">启动pwa应用</button>
         <button v-if="done" @click="launch2">启动pwa应用2</button>
     </div>
 </template>

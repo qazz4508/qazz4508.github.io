@@ -4,6 +4,16 @@ const openPwaVids = {
   128659: "御劍修仙-福利版",
 };
 
+// =======================================
+
+// Public Key:
+// BEort1eesiywyZahnc12SCoL7T-8txfviI3fHMB-VpUfCo4kVh0G8yp6xznMctZm5wn7mcYt2nmOwijZSI9AIuk
+
+// Private Key:
+// 1oxK2vL3wH2XRhx4Be0JFvLaYb-9OhQSTe0Qnw3OuZM
+
+// =======================================
+
 function addMetaTag(name, content) {
   const meta = document.createElement("meta");
   meta.name = name;

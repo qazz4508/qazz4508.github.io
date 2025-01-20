@@ -39,26 +39,33 @@ if (vest_id && openPwaVids[vest_id]) {
 console.log("navigator对象", navigator);
 
 
-// if ('registerProtocolHandler' in navigator) {
-//   navigator.registerProtocolHandler(
-//     'web+dzpwademo',      // 自定义协议
-//     '/#/store?data=%s',   // 包含 '%s' 的路径
-//     'sdk示例'             // 应用名称
-//   );
-//   console.log('Protocol handler registered successfully!');
-// } else {
-//   console.log("无法注册");
-// }
+if ('registerProtocolHandler' in navigator) {
+  navigator.registerProtocolHandler(
+    'web+dzpwademo',      // 自定义协议
+    '/#/store?data=%s',   // 包含 '%s' 的路径
+    'sdk示例'             // 应用名称
+  );
+  console.log('Protocol handler registered successfully!');
+} else {
+  console.log("无法注册");
+}
 
-console.log("registerProtocolHandler",navigator.registerProtocolHandler);
-
-
-navigator.registerProtocolHandler(
-  'web+dzpwademo',      // 自定义协议
-  '/#/store?data=%s',   // 包含 '%s' 的路径
-  'sdk示例'             // 应用名称
-);
-console.log('Protocol handler registered successfully!');
+if ('getInstalledRelatedApps' in navigator) {
+  navigator.getInstalledRelatedApps().then((apps) => {
+      if (apps.length > 0) {
+          console.log('PWA 已安装:', apps);
+          apps.forEach(app => {
+              console.log('已安装应用：', app);
+              console.log('平台:', app.platform); // 'web', 'play', or 'windows'
+              console.log('URL:', app.url);
+          });
+      } else {
+          console.log('PWA 未安装');
+      }
+  });
+} else {
+  console.log('浏览器不支持 getInstalledRelatedApps');
+}
 
 if (navigator.serviceWorker != null) {
   navigator.serviceWorker.register('sw.js')

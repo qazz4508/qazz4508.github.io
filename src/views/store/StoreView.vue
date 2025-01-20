@@ -3,9 +3,9 @@
         <div class="h2">下载页!!%%</div>
         <div>是否PWA启动: {{ isStandalone }}</div>
         <div v-if="done">已成功安装 </div>
-        <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button>
-        <button  @click="launch">启动pwa应用</button>
-        <button v-if="done" @click="launch2">启动pwa应用2</button>
+        <button v-if="canInstallPWA" @click="downloadClick">{{ progressText }}</button><br>
+        <button @click="launch">启动pwa应用</button><br>
+        <button @click="push">推送</button><br>
     </div>
 </template>
 
@@ -57,11 +57,20 @@ export default {
             this.installed = true; // 更新已安装状态
             this.canInstall = false; // 隐藏安装按钮
         });
+
+        this.push()
     },
     methods: {
-        launch2() {
-            const intentUrl = `intent:/store#Intent;scheme=https;package=com.your.package;end`;
-            window.location.href = intentUrl;
+        push() {
+            Notification.requestPermission().then(function (permission) {
+                if (permission === 'granted') {
+                    console.log('Notification permission granted.');
+                    // 订阅推送服务
+                    // subscribeUser();
+                } else {
+                    console.log('Notification permission denied.');
+                }
+            })
         },
         launch() {
             // 跳转到 PWA 的 start_url

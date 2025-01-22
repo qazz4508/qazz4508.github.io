@@ -1,7 +1,7 @@
 {
-  "name": "御劍修仙-福利版",
-  "short_name": "御劍修仙",
-  "id":"com.game.demo3",
+  "name": "sdk示例22",
+  "short_name": "sdk22",
+  "id":"com.game.demo2",
   "icons": [
     {
       "src": "../img/icons/web-app-manifest-192x192-128659.png",
@@ -14,7 +14,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/sdk/game?game_id=1088&vest_id=128659&sdk_key=1d7894eefb914bc2a25fc93b423bc456&app_type=1",
+  "start_url": "/#/game222",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",

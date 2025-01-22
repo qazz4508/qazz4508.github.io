@@ -1,11 +1,12 @@
 <template>
     <div>
         <h2>游戏界面</h2>
-
+        <button @click="push">通知</button>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: "GameView",
     mounted() {
@@ -13,29 +14,41 @@ export default {
     },
     methods: {
         push() {
-            Notification.requestPermission().then(function (permission) {
+            console.log("调用push");
+            
+            Notification.requestPermission().then((permission) => {
                 if (permission === 'granted') {
-                    console.log('Notification permission granted.');
-                    // 订阅推送服务
-                    // subscribeUser();
-                    this.subscribe()
+                    console.log('通知权限已授权。',window.webpush);
+                    // 订阅用户
+                    // this.subscribeUser();
                 } else {
-                    console.log('Notification permission denied.');
+                    console.log('通知权限被拒绝。');
                 }
-            })
+            });
         },
-        subscribe() {
-            navigator.serviceWorker.ready.then(function (registration) {
-                const applicationServerKey = this.urlBase64ToUint8Array('<Your VAPID Public Key>');
+        subscribeUser() {
+            navigator.serviceWorker.ready.then((registration) => {
+                const applicationServerKey = this.urlBase64ToUint8Array('BEort1eesiywyZahnc12SCoL7T-8txfviI3fHMB-VpUfCo4kVh0G8yp6xznMctZm5wn7mcYt2nmOwijZSI9AIuk');
                 registration.pushManager.subscribe({
                     userVisibleOnly: true,
                     applicationServerKey: applicationServerKey
-                }).then(function (subscription) {
-                    console.log('User is subscribed:', subscription);
-                    // 将订阅对象发送到服务器
-                    // sendSubscriptionToServer(subscription);
-                }).catch(function (error) {
-                    console.log('Failed to subscribe the user:', error);
+                }).then((subscription) => {
+                    console.log('用户已订阅：', subscription);
+                    var endpoint = subscription.endpoint;
+                    var key = subscription.getKey('p256dh');
+                    var auth = subscription.getKey('auth');
+                    var encodedKey = btoa(String.fromCharCode.apply(null, new Uint8Array(key)));
+                    var encodedAuth = btoa(String.fromCharCode.apply(null, new Uint8Array(auth)));
+                    const data = { publicKey: encodedKey, auth: encodedAuth, notificationEndPoint: endpoint }
+                    console.log("请求订阅数据", data);
+
+                    axios.post("http://127.0.0.1:8080/subscribe", data, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                }).catch((error) => {
+                    console.log('订阅失败：', error);
                 });
             });
         },

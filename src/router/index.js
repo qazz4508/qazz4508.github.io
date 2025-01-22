@@ -16,6 +16,11 @@ const routes = [
     component: ()=> import('@/views/store/StoreView.vue')
   },
   {
+    path:'/store2',
+    name:'store2',
+    component: ()=> import('@/views/store/StoreView2.vue')
+  },
+  {
     path:'/game',
     name:'game',
     component: ()=> import('@/views/game/Game.vue')
@@ -28,7 +33,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  // mode: 'history', // 使用 history 模式
+  mode: 'history', // 使用 history 模式
   routes
 })
 

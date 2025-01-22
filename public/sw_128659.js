@@ -11,6 +11,7 @@ cachingExtensions(workbox, options)
 runtimeCaching(workbox, options)
 offlinePage(workbox, options)
 routingExtensions(workbox, options)
+console.log("sw128659注册");
 
 function getProp(obj, prop) {
   return prop.split('.').reduce((p, c) => p[c], obj)

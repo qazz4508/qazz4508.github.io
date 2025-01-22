@@ -1,6 +1,7 @@
 // 定义配置 key 分包 value 游戏名
 const openPwaVids = {
   1: "sdk",
+  2: "sdk",
   128659: "御劍修仙-福利版",
 };
 
@@ -40,7 +41,10 @@ function createManifestElement(vest_id, name) {
 }
 
 // 获取 URL 参数
-const vest_id = 1;
+const urlParams = new URLSearchParams(window.location.search);
+let vest_id = urlParams.get("vest_id");
+console.log("Vid",vest_id);
+
 
 if (vest_id && openPwaVids[vest_id]) {
   createManifestElement(vest_id, openPwaVids[vest_id])
@@ -60,29 +64,11 @@ if ('registerProtocolHandler' in navigator) {
   console.log("无法注册");
 }
 
-if ('getInstalledRelatedApps' in navigator) {
-  navigator.getInstalledRelatedApps().then((apps) => {
-    console.log("apps",apps);
-    
-      if (apps.length > 0) {
-          console.log('PWA 已安装:', apps);
-          apps.forEach(app => {
-              console.log('已安装应用：', app);
-              console.log('平台:', app.platform); // 'web', 'play', or 'windows'
-              console.log('URL:', app.url);
-          });
-      } else {
-          console.log('PWA 未安装');
-      }
-  });
-} else {
-  console.log('浏览器不支持 getInstalledRelatedApps');
-}
 
 if (navigator.serviceWorker != null) {
-  navigator.serviceWorker.register('sw.js')
+  navigator.serviceWorker.register('sw_'+vest_id+'.js')
     .then(function (registartion) {
-      console.log('支持sw:', registartion)
+      console.log('支持sw:', registartion)  
     })
 
   // let deferredPrompt; // 用于保存 beforeinstallprompt 事件的引用

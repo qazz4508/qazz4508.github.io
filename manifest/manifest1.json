@@ -1,0 +1,17 @@
+{
+    "name": "App1",
+    "short_name": "app1",
+    "start_url": "/app1",
+    "scope": "/page1/",
+    "id":"com.dzpwa.app1",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#317EFB",
+    "icons": [
+      {
+        "src": "../icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }

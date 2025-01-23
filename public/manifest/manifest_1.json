@@ -14,6 +14,13 @@
       "type": "image/png"
     }
   ],
+  "screenshots": [
+    {
+      "src": "../screenshots/screenshot1.jpg",
+      "sizes": "810x1440",
+      "type": "image/png"
+    }
+  ],
   "start_url": "/#/game",
   "display": "standalone",
   "background_color": "#000000",
